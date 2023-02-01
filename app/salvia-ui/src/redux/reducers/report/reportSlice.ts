@@ -27,6 +27,21 @@ interface ReportParameters {
   language?: string //"en-US" | "fi-FI" | "se-SE"
 }
 
+const removeKey = (key: string, obj: object) => {
+    Object.keys(obj).forEach(i => {
+        if (i === key) {
+            // @ts-ignore
+            delete obj[i];
+        } else { // @ts-ignore
+            if (typeof obj[i] === 'object') {
+                        // @ts-ignore
+                        removeKey(key, obj[i]);
+                    }
+        }
+    });
+};
+
+
 export const getTestReport = createAsyncThunk(
   'report/getTestReport',
   async ({ /*id*/reportName, reportId }: ReportParameters) => {
@@ -34,7 +49,13 @@ export const getTestReport = createAsyncThunk(
 
  
     if (reportId !== '') {
-        response = await getQualwebReport(reportId)
+        response = await getQualwebReport(reportId);
+        // @ts-ignore
+        removeKey('dom', response.data);
+        // @ts-ignore
+        removeKey('elements', response.data);
+        // @ts-ignore
+        removeKey('metadata', response.data);
         fileDownload(new Blob([JSON.stringify(response.data, null, 2)]), reportName)
 
     }
