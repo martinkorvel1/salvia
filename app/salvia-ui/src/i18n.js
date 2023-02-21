@@ -4,6 +4,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import XHR from "i18next-xhr-backend";
 
 import translationEN from "./locales/en.json";
+import translationEE from "./locales/ee.json";
 import translationFI from "./locales/fi.json";
 import translationSV from "./locales/sv.json";
 
@@ -31,6 +32,9 @@ i18n
         },
         sv: {
             translations: translationSV
+        },
+        ee: {
+            translations: translationEE
         }
     },
     // have a common namespace used around the full app

@@ -69,7 +69,7 @@ export function getLanguageCode(language: string) {
   switch (language) {
     case 'finnish':
       return 'fi-FI'
-    case 'swedish':
+    case 'estonian':
       return 'sv-SE'
     default:
       return 'en-US'

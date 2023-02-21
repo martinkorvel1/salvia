@@ -11,7 +11,7 @@ export interface SettingsState {
 
 const initialState: SettingsState = {
   status: 'idle',
-  reportSettings: { languages: ['finnish', 'swedish', 'english'], language: 'english' },
+  reportSettings: { languages: ['finnish', 'estonian', 'english'], language: 'english' },
 }
 
 export const settingsSlice = createSlice({

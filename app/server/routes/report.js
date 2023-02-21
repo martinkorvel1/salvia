@@ -48,7 +48,7 @@ router.get('/:id/pdf', async (req, res) => {
     const data = await response.json()
     checkResponseStatus(response)
 
-    const translationResponse = await getTranslation(reportId, locale)
+    const translationResponse = await getTranslation(reportId, 'en')
     checkResponseStatus(translationResponse)
     data['json'] = await translationResponse.json()
 

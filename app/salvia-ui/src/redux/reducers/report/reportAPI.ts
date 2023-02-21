@@ -55,6 +55,8 @@ export function getPdfReport(
   type?: string,
   reportId?: string,
 ): Promise<Blob> {
+
+
   const reportType = type === 'json' ? 'jsonpdf' : 'pdf'
   const url =
     `${reportAPI}/${id}/${reportType}?` +

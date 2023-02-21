@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 i18n.configure({
-  locales: ['fi', 'en', 'sv'],
+  locales: ['fi', 'en', 'sv', 'ee'],
   directory: path.join(__dirname, 'locales'),
 })
 

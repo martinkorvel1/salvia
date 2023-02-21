@@ -14,6 +14,13 @@ const LanguageSelector = () => {
       <Block margin='xxs'>
         <LanguageMenu name={i18n.language.toUpperCase()} className='language-container'>
           <LanguageMenuItem
+              onSelect={() => i18n.changeLanguage('ee')}
+              selected={i18n.language === 'ee'}
+          >
+            Eesti (EE)
+          </LanguageMenuItem>
+
+          <LanguageMenuItem
             onSelect={() => i18n.changeLanguage('fi')}
             selected={i18n.language === 'fi'}
           >

@@ -31,7 +31,7 @@ import { validateURL } from './utils'
 const AccTestingPanel = () => {
   const [url, setURL] = useState('')
   const [depth, setDepth] = useState(2)
-  const [width, setWidth] = useState(20)
+  const [width, setWidth] = useState(0)
   const [viewport, setViewport] = useState<Viewport>('desktop')
   const [activePage, setActivePage] = useState('test')
 
@@ -50,7 +50,7 @@ const AccTestingPanel = () => {
   const resetValues = () => {
     setURL('')
     setDepth(2)
-    setWidth(20)
+    setWidth(0)
     setViewport('desktop')
     dispatch(resetCrawler())
     setActivePage('test')
@@ -142,9 +142,9 @@ const AccTestingPanel = () => {
               <TextInput
                 className='form-group'
                 labelText={translate('salvia.width')}
-                type='number'
+                type='text'
                 value={width}
-                onChange={(value) => setWidth(value ? parseInt(value?.toString()) : 20)}
+                onChange={(value) => setWidth(value ? parseInt(value?.toString()) : 0)}
                 hintText={translate('salvia.width-tooltip')}
                 statusText={width <= 0 ? translate('salvia.invalid-value') : ''}
                 status={width >= 0 ? 'default' : 'error'}
