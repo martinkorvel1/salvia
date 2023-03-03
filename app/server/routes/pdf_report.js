@@ -11,6 +11,8 @@ const { translate, formatDateTime, formatLang, formatURL_TR } = require('./utils
 const bulletRadius = 3
 const options = { bulletRadius: bulletRadius, textIndent: bulletRadius * 5 }
 
+var countObj = {};
+
 function createJSONPDF(res, jsonReport, lang) {
   const locale = formatLang(lang) || 'en'
 
@@ -613,6 +615,23 @@ function createRuleListItem(item, doc, options) {
 }
 
 function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
+
+  flawsMap.forEach((flawItems, key) => {
+    flawItems.map((item, index) => {
+      item.results.map((result, ind) => {
+        if (result.verdict === 'failed') {
+          result.elements.map((el) => {
+            if (countObj[item.code]) {
+              countObj[item.code] += 1;
+            } else {
+              countObj[item.code] = 1;
+            }
+          })
+        }
+      })
+    })
+  });
+
   const pageWidth = doc.page.width - doc.page.margins.left - doc.page.margins.right
   const pageHeight = doc.page.height - doc.page.margins.bottom - doc.page.margins.top
 
@@ -627,10 +646,13 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
 
   flawsMap.forEach((flawItems, key) => {
     flawItems.map((item, index) => {
+
       doc.moveDown(1)
       const startPos = 72
       const contentIndent = 30
       const indentedContentPos = startPos + contentIndent
+
+
 
       if (index == 0) {
         doc.font('DejaVuSans', 16)
@@ -642,10 +664,12 @@ function createFlawsChapter(doc, accessibilityFlaws, flawsMap, flawsBookmark) {
           doc.addPage()
         }
 
+
+
         flawsBookmark.addItem(item.code)
         accessibilityFlaws.add(
           doc.struct('H3', () =>
-            doc.fillColor('purple').text(item.code + ' – ' + item.name, startPos, doc.y),
+            doc.fillColor('purple').text(item.code + ' – ' + item.name + ' (' + countObj[item.code] + ')', startPos, doc.y),
           ),
         ) //check
         accessibilityFlaws.add(
