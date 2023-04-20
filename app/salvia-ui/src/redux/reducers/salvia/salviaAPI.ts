@@ -20,7 +20,7 @@ export function saveSalviaTestCase(
   report: Record<string, StatReport>,
   viewport: Viewport,
   user?: UserInfo | undefined,
-): Promise<{ data: string }> {
+): Promise<Blob> {
   const newTestCase: SalviaSaveTestCase = {
     domain: domain,
     viewport: viewport,
@@ -39,6 +39,6 @@ export function saveSalviaTestCase(
       throw new Error(response.statusText)
     }
 
-    return response.json() as Promise<{ data: string }>
+    return response.blob();
   })
 }

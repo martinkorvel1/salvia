@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace SalviaServiceAPI
 {
@@ -30,6 +31,11 @@ namespace SalviaServiceAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SalviaServiceAPI", Version = "v1" });
             });
+
+            services.Configure<KestrelServerOptions>(options =>
+            {
+                 options.Limits.MaxRequestBodySize = int.MaxValue; // if don't set default value is: 30 MB
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +52,7 @@ namespace SalviaServiceAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            // app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

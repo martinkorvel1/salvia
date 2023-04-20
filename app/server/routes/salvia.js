@@ -5,6 +5,7 @@ const https = require('https')
 const http = require('http')
 const urljoin = require('url-join')
 
+
 const router = express.Router()
 
 function checkResponseStatus(res) {
@@ -38,9 +39,9 @@ router.post('/test', async (req, res) => {
     })
 
     checkResponseStatus(response)
-    const data = await response.json()
+    const data = await response.blob()
 
-    return res.status(200).json({ data: data })
+    return res.status(200).blob(data);
   } catch (err) {
     console.log(err.message)
     res.status(response?.status ?? 500)

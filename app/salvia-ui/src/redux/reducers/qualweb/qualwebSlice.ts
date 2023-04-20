@@ -63,7 +63,7 @@ export const createTest = createAsyncThunk(
 
     const response = await saveSalviaTestCase(domain, storeResponse.id, statReport, viewport, user)
 
-    return response.data
+    return response;
   },
 )
 
