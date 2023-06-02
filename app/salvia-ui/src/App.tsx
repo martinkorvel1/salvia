@@ -52,9 +52,9 @@ library.add(
 function App() {
   const customTheme = {
     gradients: {
-      highlightBaseToHighlightDark1: `linear-gradient(0deg, ${suomifiDesignTokens.colors.accentTertiaryDark1} 0%, ${suomifiDesignTokens.colors.accentTertiary} 100%)`,
-      highlightLight1ToHighlightBase: `linear-gradient(0deg, ${suomifiDesignTokens.colors.accentTertiary} 0%, ${accentTertiaryLight1} 100%)`,
-      depthSecondaryToDepthSecondaryDark1: `linear-gradient(0deg, ${accentTertiaryLight3}, ${accentTertiaryLight4})`,
+      highlightBaseToHighlightDark1: ``,
+      highlightLight1ToHighlightBase: ``,
+      depthSecondaryToDepthSecondaryDark1: ``,
     },
     colors: {
       highlightDark1: suomifiDesignTokens.colors.accentTertiaryDark1,

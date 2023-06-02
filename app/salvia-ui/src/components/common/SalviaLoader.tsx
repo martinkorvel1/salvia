@@ -19,7 +19,7 @@ const SalviaLoader = (props: LoaderProps) => {
 
   return (
     <div className='salvia-loader'>
-      <FadeLoader loading={true} color={suomifiDesignTokens.colors.accentTertiaryDark1} />
+      <FadeLoader loading={true} color="#003087"/>
       <p tabIndex={-1} ref={msgRef}>
         <Text>{props.text ?? translate('salvia.loading')}</Text>
       </p>
