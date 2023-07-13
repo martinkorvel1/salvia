@@ -159,7 +159,7 @@ function createPDF(res, jsonReport, lang) {
 
     struct.add(
       doc.struct('H1', () => {
-        doc.fontSize(26).fillColor('blue').text(translate('salvia.report-title')).moveDown(1)
+        doc.fontSize(26).fillColor('black').text(translate('salvia.report-title')).moveDown(1)
       }),
     )
 
@@ -283,7 +283,7 @@ function createReportDetails(doc, jsonReport, viewport) {
           .text(translate('salvia.report.act-rules') + " (", { /*link: null,*/ continued: true })
       },
       doc.struct('Link', () => {
-        doc.fillColor('blue').text(translate('salvia.act-rules.url'), {
+        doc.fillColor('black').text(translate('salvia.act-rules.url'), {
           link: translate('salvia.act-rules.url'),
           continued: true,
         })
