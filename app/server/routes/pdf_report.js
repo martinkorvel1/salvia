@@ -279,11 +279,11 @@ function createReportDetails(doc, jsonReport, viewport) {
         }),
       () => {
         doc
-          .fillColor('black').text("). ", { link: null, continued: true })
+          .fillColor('blue').text("). ", { link: null, continued: true })
           .text(translate('salvia.report.act-rules') + " (", { /*link: null,*/ continued: true })
       },
       doc.struct('Link', () => {
-        doc.fillColor('black').text(translate('salvia.act-rules.url'), {
+        doc.fillColor('blue').font('DejaVuSans-Bold').text(translate('salvia.act-rules.url'), {
           link: translate('salvia.act-rules.url'),
           continued: true,
         })
